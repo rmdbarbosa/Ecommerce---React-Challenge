@@ -8,7 +8,7 @@ import Chip from "@mui/joy/Chip";
 import Link from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
 
-export default function ProductCard({
+export default function Product({
   title,
   price,
   brand,
