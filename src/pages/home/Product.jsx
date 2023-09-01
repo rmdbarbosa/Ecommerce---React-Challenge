@@ -7,6 +7,7 @@ import CardOverflow from "@mui/joy/CardOverflow";
 import Chip from "@mui/joy/Chip";
 import Link from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
+import { ShopContext } from "../../context/shop-context";
 
 export default function Product({
   title,
@@ -15,7 +16,12 @@ export default function Product({
   thumbnail,
   stock,
   rating,
+  id,
 }) {
+  const { addToCart, cartItems } = React.useContext(ShopContext);
+
+  const cartItemAmount = cartItems[id];
+
   return (
     <Card sx={{ width: 320, maxWidth: "100%", boxShadow: "lg" }}>
       <CardOverflow>
@@ -50,8 +56,13 @@ export default function Product({
         </Typography>
       </CardContent>
       <CardOverflow>
-        <Button variant="solid" color="primary" size="lg">
-          Add to cart
+        <Button
+          onClick={() => addToCart(id)}
+          variant="solid"
+          color="primary"
+          size="lg"
+        >
+          Add to cart {cartItemAmount > 0 && <> ({cartItemAmount}) </>}
         </Button>
       </CardOverflow>
     </Card>
