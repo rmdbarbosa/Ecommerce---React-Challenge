@@ -1,22 +1,18 @@
-import { useEffect, useState } from "react";
-import ProductCard from "./components/ProductCard";
-import "./app.css";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import DrawerAppBar from "./components/DrawerAppBar";
 
-function App() {
-  const [url, setUrl] = useState("https://dummyjson.com/products");
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setProducts(data.products));
-  }, [url]);
-
-  const productElements = products.map((product) => {
-    return <ProductCard key={product.id} {...product} />;
-  });
-
-  return <div className="container">{productElements}</div>;
+export default function App() {
+  return (
+    <div className="App">
+      <Router>
+        <DrawerAppBar />
+        <Routes>
+          <Route path="/" />
+          <Route path="/cart" />
+          <Route path="/checkout" />
+        </Routes>
+      </Router>
+    </div>
+  );
 }
-
-export default App;
