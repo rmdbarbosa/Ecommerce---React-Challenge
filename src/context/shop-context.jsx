@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import { useEffect } from "react";
 
 export const ShopContext = createContext(null);
 
@@ -12,6 +13,25 @@ const getDefaultCart = () => {
 
 export default function ShopContextProvider(props) {
   const [cartItems, setCartItems] = useState(getDefaultCart());
+  const [url, setUrl] = useState("https://dummyjson.com/products");
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setProducts(data.products));
+  }, []);
+
+  const getTotalCartAmount = () => {
+    let totalAmount = 0;
+    for (const item in cartItems) {
+      if (cartItems[item] > 0) {
+        let itemInfo = products.find((product) => product.id === Number(item));
+        totalAmount += cartItems[item] * itemInfo.price;
+      }
+    }
+    return totalAmount;
+  };
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
@@ -21,9 +41,19 @@ export default function ShopContextProvider(props) {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
   };
 
-  const contextValue = { cartItems, addToCart, removeFromCart };
+  const updateCartItemCount = (newAmount, itemId) => {
+    setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
+  };
 
-  console.log(cartItems);
+  const contextValue = {
+    cartItems,
+    addToCart,
+    removeFromCart,
+    products,
+    setUrl,
+    updateCartItemCount,
+    getTotalCartAmount,
+  };
 
   return (
     <ShopContext.Provider value={contextValue}>

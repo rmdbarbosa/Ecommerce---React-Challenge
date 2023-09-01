@@ -65,13 +65,7 @@ export default function Checkout() {
           position: "relative",
           borderBottom: (t) => `1px solid ${t.palette.divider}`,
         }}
-      >
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Company name
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      ></AppBar>
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper
           variant="outlined"
