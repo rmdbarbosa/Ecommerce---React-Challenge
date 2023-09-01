@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductCard from "./components/ProductCard";
+import "./app.css";
 
 function App() {
   const [url, setUrl] = useState("https://dummyjson.com/products");
@@ -15,7 +16,7 @@ function App() {
     return <ProductCard key={product.id} {...product} />;
   });
 
-  return <div>{productElements}</div>;
+  return <div className="container">{productElements}</div>;
 }
 
 export default App;
