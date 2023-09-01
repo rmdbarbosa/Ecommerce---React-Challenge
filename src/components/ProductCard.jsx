@@ -9,30 +9,30 @@ import Link from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
-export default function ProductCard() {
+export default function ProductCard({
+  title,
+  price,
+  brand,
+  thumbnail,
+  stock,
+  rating,
+}) {
   return (
     <Card sx={{ width: 320, maxWidth: "100%", boxShadow: "lg" }}>
       <CardOverflow>
         <AspectRatio sx={{ minWidth: 200 }}>
-          <img
-            src="https://images.unsplash.com/photo-1593121925328-369cc8459c08?auto=format&fit=crop&w=286"
-            srcSet="https://images.unsplash.com/photo-1593121925328-369cc8459c08?auto=format&fit=crop&w=286&dpr=2 2x"
-            loading="lazy"
-            alt=""
-          />
+          <img src={thumbnail} loading="lazy" alt="" />
         </AspectRatio>
       </CardOverflow>
       <CardContent>
-        <Typography level="body-xs">Bluetooth Headset</Typography>
+        <Typography level="body-xs">{brand}</Typography>
         <Link
           href="#product-card"
           fontWeight="md"
           color="neutral"
           textColor="text.primary"
-          overlay
-          endDecorator={<ArrowOutwardIcon />}
         >
-          Super Rockez A400
+          {title}
         </Link>
 
         <Typography
@@ -44,14 +44,14 @@ export default function ProductCard() {
             </Chip>
           }
         >
-          2,900 THB
+          ${price}
         </Typography>
         <Typography level="body-sm">
-          (Only <b>7</b> left in stock!)
+          (Only <b>{stock}</b> left in stock!)
         </Typography>
       </CardContent>
       <CardOverflow>
-        <Button variant="solid" color="danger" size="lg">
+        <Button variant="solid" color="primary" size="lg">
           Add to cart
         </Button>
       </CardOverflow>
