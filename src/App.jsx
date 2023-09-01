@@ -1,5 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/home/Home";
+import Cart from "./pages/cart/Cart";
+import Checkout from "./pages/checkout/Checkout";
 import DrawerAppBar from "./components/DrawerAppBar";
 
 export default function App() {
@@ -8,9 +11,9 @@ export default function App() {
       <Router>
         <DrawerAppBar />
         <Routes>
-          <Route path="/" />
-          <Route path="/cart" />
-          <Route path="/checkout" />
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </Router>
     </div>
