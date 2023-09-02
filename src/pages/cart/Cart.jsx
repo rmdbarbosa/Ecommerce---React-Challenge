@@ -4,6 +4,7 @@ import CartItem from "./CartItem";
 import "./cart.css";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Button from "@mui/joy/Button";
 
 export default function Cart() {
   const { products, cartItems, getTotalCartAmount } =
@@ -24,10 +25,12 @@ export default function Cart() {
       {totalAmount > 0 ? (
         <div className="total__container">
           <p>Total: $ {totalAmount}</p>
-          <button onClick={() => navigate("/")}>Continue Shopping</button>
-          <Link to={"/checkout"}>
-            <button>Checkout</button>
-          </Link>
+          <div className="cart__button__container">
+            <Button onClick={() => navigate("/")}> Checkout </Button>
+            <Link to={"/checkout"}>
+              <Button> Checkout </Button>
+            </Link>
+          </div>
         </div>
       ) : (
         <h1>Empty Cart</h1>

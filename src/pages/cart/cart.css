@@ -5,3 +5,9 @@ h1 {
 .total__container {
   text-align: center;
 }
+
+.cart__button__container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
