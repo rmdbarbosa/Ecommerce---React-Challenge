@@ -20,7 +20,7 @@ export default function ShopContextProvider(props) {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setProducts(data.products));
-  }, []);
+  }, [url]);
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;

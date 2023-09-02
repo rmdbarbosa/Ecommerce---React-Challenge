@@ -10,5 +10,9 @@ export default function Home() {
     return <Product key={product.id} {...product} />;
   });
 
-  return <div className="container">{productElements}</div>;
+  return (
+    <>
+      <div className="container">{productElements}</div>
+    </>
+  );
 }
