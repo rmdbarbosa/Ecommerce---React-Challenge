@@ -26,7 +26,7 @@ export default function Product({
     <Card sx={{ width: 320, maxWidth: "100%", boxShadow: "lg" }}>
       <CardOverflow>
         <AspectRatio sx={{ minWidth: 200 }}>
-          <img src={thumbnail} loading="lazy" alt="" />
+          <img src={thumbnail} alt={title} />
         </AspectRatio>
       </CardOverflow>
       <CardContent>
@@ -45,7 +45,7 @@ export default function Product({
           sx={{ mt: 1, fontWeight: "xl" }}
           endDecorator={
             <Chip component="span" size="sm" variant="soft" color="success">
-              Lowest price
+              In stock
             </Chip>
           }
         >

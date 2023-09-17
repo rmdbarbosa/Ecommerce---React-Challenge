@@ -15,6 +15,7 @@ export default function Cart() {
   return (
     <>
       <h1>Your Cart Items</h1>
+      <hr />
       <div className="cart__container">
         {products.map((product) => {
           if (cartItems[product.id] !== 0) {
@@ -26,14 +27,19 @@ export default function Cart() {
         <div className="total__container">
           <p>Total: $ {totalAmount}</p>
           <div className="cart__button__container">
-            <Button onClick={() => navigate("/")}> Checkout </Button>
+            <Button onClick={() => navigate("/")}> Continue Shopping </Button>
             <Link to={"/checkout"}>
               <Button> Checkout </Button>
             </Link>
           </div>
         </div>
       ) : (
-        <h1>Empty Cart</h1>
+        <div className="empty__cart">
+          <h1>Your cart is empty</h1>
+          <Link to="/">
+            <Button>Continue shopping</Button>
+          </Link>
+        </div>
       )}
     </>
   );

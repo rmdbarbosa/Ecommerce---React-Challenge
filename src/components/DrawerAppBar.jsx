@@ -30,17 +30,29 @@ function DrawerAppBar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        Totality Corp
+        Awesome Store
       </Typography>
       <Divider />
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+      <List
+        style={{
+          display: "grid",
+          justifyContent: "center",
+        }}
+      >
+        <ListItem disablePadding>
+          <Link to={"/"}>
             <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
+              <ListItemText primary="Home" />
             </ListItemButton>
-          </ListItem>
-        ))}
+          </Link>
+        </ListItem>
+        <ListItem disablePadding>
+          <Link to={"/cart"}>
+            <ListItemButton sx={{ textAlign: "center" }}>
+              <ListItemText primary="Cart" />
+            </ListItemButton>
+          </Link>
+        </ListItem>
       </List>
     </Box>
   );
@@ -67,7 +79,7 @@ function DrawerAppBar(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            Totality Corp
+            Awesome Store
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             <Link to={"/"}>

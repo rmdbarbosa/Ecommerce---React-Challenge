@@ -3,7 +3,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Toolbar from "@mui/material/Toolbar";
 import Paper from "@mui/material/Paper";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -14,13 +13,15 @@ import Typography from "@mui/material/Typography";
 import AddressForm from "./AddressForm";
 import PaymentForm from "./PaymentForm";
 import Review from "./Review";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        Totality Corp
+        Awesome Store
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -45,6 +46,16 @@ function getStepContent(step) {
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (activeStep === 3) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
+  }, [activeStep]);
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
