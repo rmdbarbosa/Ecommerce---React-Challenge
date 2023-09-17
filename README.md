@@ -4,9 +4,7 @@ Develop an intermediate-level e-commerce website using React or similar frontend
 
 # Challenge Details
 
-Product Listing:
-
-- []  Display a variety of products with images, names, prices, and "Add to Cart" buttons. Implement filters to allow users to sort products by category, price range, or ratings.
+Product Listing
 
 Shopping Cart:
 
@@ -31,9 +29,6 @@ Responsive Design:
 - [x] ReactJS
 - [x] DummyJSON
 
-
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
-
-
